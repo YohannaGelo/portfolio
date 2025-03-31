@@ -1,0 +1,123 @@
+@import 'tailwindcss';
+
+/* @ayer theme, base, components, utilities */
+
+/* Para personalizar el tema con nuestras variables */
+@theme {
+    --color-rosa-claro: #FF9FDF;
+    --color-rosa-medio: #FF6EC7;
+    --color-rosa-oscuro: #FF00AA;
+
+    --font-orbitron: 'Orbitron', sans-serif;
+    --font-mono: 'Roboto Mono', monospace;
+}
+
+/* Para estilos que afectan a todas las etiquetas */
+@layer base {
+
+    /* Ahora los h1 siempre tendrán este tamaño */
+    h1 {
+        font-size: var(--text-5xl)
+    }
+
+    h2 {
+        font-size: var(--text-4xl)
+    }
+
+}
+
+/* Para crear nuestros propios componentes */
+@layer components {
+    .wrapper {
+        /* Para usar clases propias de tailwind lo hacemos así */
+        @apply w-[90%] mx-auto max-w-screen-xl;
+
+        /* Podríamos usar clases normales de css */
+    }
+
+    /* Más componentes aquí */
+}
+
+/* Para crear nuestras propias utilidades */
+@layer utilities {
+    .flex-center {
+        @apply flex justify-items-center items-center;
+    }
+}
+
+/* 
+A partir de la version 4 sería así:
+
+@utility flex-center {
+    @apply flex justify-items-center items-center;
+} */
+
+
+@keyframes cyber-bounce {
+    0% {
+      transform: translateY(-100vh) rotate(-12deg);
+      opacity: 0;
+      filter: none;
+      animation-timing-function: cubic-bezier(0.4, 0, 0.7, 0.2);
+    }
+    /* Primer rebote (parpadeo intenso) */
+    40% {
+      transform: translateY(0) rotate(5deg);
+      opacity: 1;
+      filter: none;
+    }
+    45% {
+      filter: drop-shadow(0 0 2px var(--color-white));
+    }
+    50% {
+      filter: none;
+    }
+    55% {
+      transform: translateY(-25px) rotate(-3deg);
+      filter: drop-shadow(0 0 10px var(--color-rosa-oscuro));
+    }
+    60% {
+      filter: none;
+      opacity: 0.7;
+    }
+    /* Segundo rebote (parpadeo más rápido) */
+    65% {
+      transform: translateY(10px) rotate(2deg);
+      filter: drop-shadow(0 0 4px var(--color-white)) 
+              drop-shadow(0 0 8px var(--color-rosa-claro));
+      opacity: 1;
+    }
+    68% {
+      filter: none;
+      opacity: 0.8;
+    }
+    70% {
+      filter: drop-shadow(0 0 1px var(--color-white));
+    }
+    75% {
+      transform: translateY(-8px) rotate(-1deg);
+      filter: drop-shadow(0 0 6px var(--color-rosa-oscuro));
+    }
+    78% {
+      filter: none;
+    }
+    /* Tercer rebote (estabilización) */
+    85% {
+      transform: translateY(3px) rotate(0.5deg);
+      filter: drop-shadow(0 0 3px var(--color-white)) 
+              drop-shadow(0 0 6px var(--color-rosa-claro));
+    }
+    88% {
+      filter: drop-shadow(0 0 1px var(--color-white));
+    }
+    100% {
+      transform: translateY(0) rotate(0);
+      filter: drop-shadow(0 0 6px var(--color-white)) 
+              drop-shadow(0 0 12px var(--color-rosa-claro)) 
+              drop-shadow(0 0 18px var(--color-rosa-oscuro));
+    }
+  }
+  
+  .logo-animation {
+    animation: cyber-bounce 2.8s forwards;
+  }

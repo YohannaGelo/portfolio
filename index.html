@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@300;400&display=swap"
+        rel="stylesheet">
+
+    <link rel="icon" href="dist/assets/img/logo_YohannaGelo.svg" type="image/x-icon">
+
+    <!-- ruta del css resultante -->
+    <link rel="stylesheet" href="dist/css/styles.css">
+    <title>Yohanna Gelo - Portfolio</title>
+</head>
+
+<body class="bg-black text-gray-100 font-mono">
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <!-- Efecto circuito de fondo -->
+        <!-- <div class="absolute inset-0 z-0">
+            <div class="absolute w-full h-full bg-[url('./assets/img/circuit-pattern.svg')] opacity-20"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
+        </div> -->
+
+        <div class="container mx-auto px-4 z-10 text-center">
+            <!-- Logo con animación -->
+            <img id="logo" src="dist/assets/img/logo_YohannaGelo.svg" alt="Logo YG"
+                class="neon-logo logo-animation w-80 mx-auto mb-16 animate-pulse">
+
+
+            <p class="text-xl md:text-2xl text-rosa-claro mb-8">Código con estilo, diseños que vibran</p>
+            <a href="#projects"
+                class="bg-pink-600 hover:bg-pink-700 text-white px-8 py-3 rounded-lg font-bold transition-all hover:shadow-lg hover:shadow-pink-500/30">
+                Explora mis proyectos
+            </a>
+        </div>
+    </section>
+
+    <!-- Sección Proyectos -->
+    <section id="projects" class="py-20 bg-gradient-to-b from-black to-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16 text-rosa-medio">Mis <span
+                    class="underline decoration-pink-500">Proyectos</span></h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tarjeta proyecto 1 -->
+                <div
+                    class="bg-gray-800/50 backdrop-blur-sm border border-pink-900/50 rounded-xl p-6 hover:border-pink-500 transition-all hover:-translate-y-2">
+                    <h3 class="text-2xl font-bold text-rosa-claro mb-2">Arquería</h3>
+                    <p class="text-gray-300 mb-4">Juego de arquería con HTML/CSS/JS puro.</p>
+                    <div class="flex gap-2 mb-4">
+                        <span class="bg-pink-900/50 text-rosa-claro px-3 py-1 rounded-full text-xs">HTML/CSS</span>
+                        <span class="bg-pink-900/50 text-rosa-claro px-3 py-1 rounded-full text-xs">JavaScript</span>
+                    </div>
+                    <a href="https://yohannagelo.ruix.iesruizgijon.es/arqueria/" target="_blank"
+                        class="text-rosa-medio hover:text-pink-200 flex items-center gap-2">
+                        Ver proyecto <span>→</span>
+                    </a>
+                </div>
+
+                <!-- Tarjeta proyecto 2 (Gelotech) -->
+                <div
+                    class="bg-gray-800/50 backdrop-blur-sm border border-pink-900/50 rounded-xl p-6 hover:border-pink-500 transition-all hover:-translate-y-2">
+                    <h3 class="text-2xl font-bold text-rosa-claro mb-2">Gelotech</h3>
+                    <p class="text-gray-300 mb-4">Descripción breve de tu proyecto.</p>
+                    <div class="flex gap-2 mb-4">
+                        <span class="bg-pink-900/50 text-rosa-claro px-3 py-1 rounded-full text-xs">Tecnología</span>
+                    </div>
+                    <a href="#" class="text-rosa-medio hover:text-pink-200 flex items-center gap-2">
+                        Próximamente <span>⌛</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 border-t border-gray-800 text-center">
+        <p class="text-rosa-medio/70">Hecho con ❤️ y código neón</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="dist/assets/js/main.js"></script>
+
+</body>
+
+</html>
