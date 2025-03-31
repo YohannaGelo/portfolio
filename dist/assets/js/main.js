@@ -10,6 +10,22 @@ logo.addEventListener('mouseleave', () => {
     logo.classList.add('logo-final'); // Evita que vuelva a caer después del hover
 });
 
+// Comportamiento del nav
+// document.addEventListener("DOMContentLoaded", () => {
+//     const nav = document.getElementById("floating-nav");
+//     const hero = document.getElementById("hero");
+
+//     window.addEventListener("scroll", () => {
+//         if (window.scrollY >= hero.offsetHeight - 100) {
+//             nav.classList.add("nav-fixed");
+            
+//         } else {
+//             nav.classList.remove("nav-fixed");
+//         }
+//     });
+// });
+
+
 
 // Efecto hover en tarjetas
 document.querySelectorAll('.project-card').forEach(card => {

@@ -39,7 +39,7 @@
         @apply bg-transparent text-pink-400 shadow-lg;
         border: 1px solid var(--color-rosa-oscuro);
         cursor: pointer;
-        box-shadow: 
+        box-shadow:
         0 0 1.5px #FF6EC7,
         inset 0 0 1.5px #FF6EC7;
     }
@@ -57,6 +57,26 @@
 /* -------------------------- CUSTOM STYLES -------------------------- */
 
 /* 🖌️ MIS ESTILOS PERSONALIZADOS 🖌️ */
+
+#floating-nav {
+    position: sticky; /* Se queda fijo al hacer scroll */
+    top: 0; /* Se fija en la parte superior */
+    z-index: 50; /* Asegúrate de que esté por encima de otros elementos */
+    width: 95%; /* Ocupa todo el ancho de la pantalla */
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo para que sea visible */
+    border-bottom: 1px solid var(--color-rosa-oscuro); /* Línea inferior opcional */
+    padding: 0.2rem 1rem; /* Espaciado interno */
+    transition: all 0.4s ease-in-out;
+}
+
+.nav-hover:hover {
+    @apply bg-transparent text-pink-400 shadow-lg;
+        cursor: pointer;
+        box-shadow:
+        0 0 1.5px #FF6EC7,
+        inset 0 0 1.5px #FF6EC7;
+}
+
 
 /* Animaciones para el logo de la página */
 @keyframes cyber-bounce {
@@ -184,7 +204,7 @@
     border-radius: 8px;
     overflow: hidden;
     background: rgba(0, 0, 0, 0.3);
-    box-shadow: 
+    box-shadow:
         0 0 5px #FF6EC7,
         inset 0 0 5px #FF6EC7;
 }
@@ -215,7 +235,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
+    background:
         radial-gradient(circle at 30% 30%, rgba(255, 110, 199, 0.2), transparent 70%),
         radial-gradient(circle at 70% 70%, rgba(255, 110, 199, 0.2), transparent 70%);
     animation: distortion 6s ease-in-out infinite alternate;
@@ -224,10 +244,10 @@
 
 /* Imagen con efecto de holograma */
 .hologram-img {
-    
+
     position: relative;
     z-index: 0;
-    animation: 
+    animation:
         hologram-pulse 4s infinite alternate,
         color-shift 8s infinite alternate;
     filter: contrast(1.2) brightness(0.9);
