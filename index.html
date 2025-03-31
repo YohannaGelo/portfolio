@@ -19,62 +19,376 @@
 
 <body class="bg-black text-gray-100 font-mono">
     <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <!-- Efecto circuito de fondo -->
-        <!-- <div class="absolute inset-0 z-0">
-            <div class="absolute w-full h-full bg-[url('./assets/img/circuit-pattern.svg')] opacity-20"></div>
-            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
-        </div> -->
-
+    <section
+        class="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-black to-gray-900">
         <div class="container mx-auto px-4 z-10 text-center">
             <!-- Logo con animación -->
             <img id="logo" src="dist/assets/img/logo_YohannaGelo.svg" alt="Logo YG"
-                class="neon-logo logo-animation w-80 mx-auto mb-16 animate-pulse">
+                class="logo-animation w-[80%] md:w-[35%] mx-auto mb-16">
 
 
             <p class="text-xl md:text-2xl text-rosa-claro mb-8">Código con estilo, diseños que vibran</p>
-            <a href="#projects"
-                class="bg-pink-600 hover:bg-pink-700 text-white px-8 py-3 rounded-lg font-bold transition-all hover:shadow-lg hover:shadow-pink-500/30">
-                Explora mis proyectos
-            </a>
+            <a href="#projects" class="btn-neon">Explora mis proyectos</a>
+        </div>
+    </section>
+
+    <!-- Sección Sobre Mí -->
+    <section id="about" class="py-20 px-4 bg-gradient-to-b from-black to-gray-800 border-t-1 border-t-pink-600 border-t-1 border-t-pink-600">
+        <div class="container mx-auto max-w-5xl">
+            <h2>Sobre Mí</h2>
+
+            <h3 class="text-2xl font-bold text-pink-400 mb-4">¡Hola! Soy Yohanna 👋</h3>
+            <p class=" text-gray-300 mb-8">
+                Desarrolladora web full-stack con pasión por crear soluciones elegantes y funcionales.
+                Me encanta aprender nuevas tecnologías y enfrentarme a desafíos creativos.
+            </p>
+
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <!-- Foto con efecto holograma -->
+                <!-- <div class="w-full md:w-1/3 flex justify-center">
+                    <img src="dist/assets/img/yomisma.webp" alt="Yohanna Gelo"
+                        class="hologram-effect w-64 h-auto object-cover rounded-lg">
+                </div> -->
+                <div class="hologram-container">
+                    <div class="hologram-effect w-full md:w-1/3 flex justify-center">
+                        <img src="dist/assets/img/yomisma.webp" alt="Yohanna Gelo" class="hologram-img w-full h-auto object-cover rounded-sm">
+                        <div class="hologram-particles" id="particles"></div>
+                    </div>
+                </div>
+
+                    <!-- Info personal -->
+                    <div class="w-full md:w-2/3">
+
+                        <!-- Timeline -->
+                        <div>
+                            <h4 class="text-xl font-bold text-pink-300 mb-4">Mi Viaje 🚀</h4>
+                            <div class="pl-6">
+                                <div class="timeline-item">
+                                    <h5 class="font-bold">2021 - Ciclo Medio SMR</h5>
+                                    <p class="text-gray-400">Primeras líneas de código HTML/CSS</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h5 class="font-bold">2023 - Ciclo Superior DAW</h5>
+                                    <p class="text-gray-400">Java, JavaScript, PHP y... ¡Frameworks!</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h5 class="font-bold">2025 - A volar</h5>
+                                    <p class="text-gray-400">Primeros proyectos freelance y colaboraciones</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Superpoderes -->
+                <div class="mt-8">
+                    <h4 class="text-xl font-bold text-pink-300 mb-4">Mis Superpoderes 💫</h4>
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <li class="flex items-center">
+                            <span class="mr-2">☕</span> Debuggear con café
+                        </li>
+                        <li class="flex items-center">
+                            <span class="mr-2">🔍</span> Encontrar errores en código ajeno
+                        </li>
+                        <li class="flex items-center">
+                            <span class="mr-2">⚡</span> Aprender tecnologías rápidamente
+                        </li>
+                        <li class="flex items-center">
+                            <span class="mr-2">🎨</span> Diseñar interfaces bonitas y funcionales
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    </section>
+
+    <!-- Sección Tech Stack -->
+    <section id="tech" class="py-20 px-4 bg-gradient-to-b from-black to-gray-800 border-t-1 border-t-pink-600">
+        <div class="container mx-auto max-w-5xl">
+            <h2>Tech Stack</h2>
+
+            <!-- Lenguajes de Programación -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-pink-300 mb-6 text-center">Lenguajes</h3>
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.worldvectorlogo.com/logos/java-4.svg" alt="Java"
+                            class="tech-icon h-12 w-12 mb-2">
+                        <span class="text-xs">Java</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.worldvectorlogo.com/logos/javascript-2.svg" alt="JavaScript"
+                            class="tech-icon h-12 w-12 mb-2 border border-white bg-white rounded">
+                        <span class="text-xs">JavaScript</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.worldvectorlogo.com/logos/typescript.svg" alt="TypeScript"
+                            class="tech-icon h-12 w-12 mb-2 rounded">
+                        <span class="text-xs">TypeScript</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.worldvectorlogo.com/logos/php-4.svg" alt="PHP"
+                            class="tech-icon h-12 w-12 mb-2 border border-white bg-white rounded">
+                        <span class="text-xs">PHP</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.worldvectorlogo.com/logos/html-1.svg" alt="HTML5"
+                            class="tech-icon h-12 w-12 mb-2">
+                        <span class="text-xs">HTML5</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.worldvectorlogo.com/logos/css-3.svg" alt="CSS"
+                            class="tech-icon h-12 w-12 mb-2">
+                        <span class="text-xs">CSS</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Frameworks y Librerías -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-pink-300 mb-6 text-center">Frameworks</h3>
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.worldvectorlogo.com/logos/spring-3.svg" alt="Spring Boot"
+                            class="tech-icon h-12 w-12 mb-2">
+                        <span class="text-xs">Spring Boot</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.worldvectorlogo.com/logos/laravel-2.svg" alt="Laravel"
+                            class="tech-icon h-12 w-12 mb-2">
+                        <span class="text-xs">Laravel</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.worldvectorlogo.com/logos/angular-icon-1.svg" alt="Angular"
+                            class="tech-icon h-12 w-12 mb-2">
+                        <span class="text-xs">Angular</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.worldvectorlogo.com/logos/bootstrap-5-1.svg" alt="Bootstrap"
+                            class="tech-icon h-12 w-12 mb-2">
+                        <span class="text-xs">Bootstrap</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg" alt="Tailwind CSS"
+                            class="tech-icon h-12 w-12 mb-2">
+                        <span class="text-xs">Tailwind</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bases de Datos -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-pink-300 mb-6 text-center">Bases de Datos</h3>
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.worldvectorlogo.com/logos/mysql-2.svg" alt="MySQL"
+                            class="tech-icon h-12 w-12 mb-2 rounded">
+                        <span class="text-xs">MySQL</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.worldvectorlogo.com/logos/phpmyadmin-logo.svg" alt="phpMyAdmin"
+                            class="tech-icon h-12 w-12 mb-2 border border-white bg-white rounded">
+                        <span class="text-xs">phpMyAdmin</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Herramientas y Plataformas -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-pink-300 mb-6 text-center">Herramientas</h3>
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.worldvectorlogo.com/logos/docker.svg" alt="Docker"
+                            class="tech-icon h-12 w-12 mb-2">
+                        <span class="text-xs">Docker</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.worldvectorlogo.com/logos/apache.svg" alt="Apache"
+                            class="tech-icon h-12 w-12 mb-2 rounded">
+                        <span class="text-xs">Apache</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.worldvectorlogo.com/logos/visual-studio-code-1.svg" alt="VS Code"
+                            class="tech-icon h-12 w-12 mb-2">
+                        <span class="text-xs">VS Code</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.worldvectorlogo.com/logos/netbeans-1.svg" alt="NetBeans"
+                            class="tech-icon h-12 w-12 mb-2">
+                        <span class="text-xs">NetBeans</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.worldvectorlogo.com/logos/wordpress-icon-1.svg" alt="WordPress"
+                            class="tech-icon h-12 w-12 mb-2">
+                        <span class="text-xs">WordPress</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.worldvectorlogo.com/logos/adobe-photoshop-2.svg" alt="Photoshop"
+                            class="tech-icon h-12 w-12 mb-2">
+                        <span class="text-xs">Photoshop</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tecnologías Web -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-pink-300 mb-6 text-center">Web</h3>
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.worldvectorlogo.com/logos/ajax-1.svg" alt="AJAX"
+                            class="tech-icon h-12 w-12 mb-2 rounded">
+                        <span class="text-xs">AJAX</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.worldvectorlogo.com/logos/sass-1.svg" alt="SASS"
+                            class="tech-icon h-12 w-12 mb-2">
+                        <span class="text-xs">SASS</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aprendiendo actualmente -->
+            <div class="text-center p-6 border border-pink-600 rounded-lg max-w-md mx-auto bg-black/80">
+                <h4 class="text-xl font-bold text-pink-300 mb-2">Actualmente aprendiendo...</h4>
+                <div class="flex justify-center items-center">
+                    <span class="text-2xl mr-2">🚀</span>
+                    <span>¡A sacarle jugo a todo esto!</span>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Sección Proyectos -->
-    <section id="projects" class="py-20 bg-gradient-to-b from-black to-gray-900">
+    <section id="projects" class="py-20 px-4 bg-gradient-to-b from-black to-gray-800 border-t-1 border-t-pink-600">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-16 text-rosa-medio">Mis <span
-                    class="underline decoration-pink-500">Proyectos</span></h2>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Tarjeta proyecto 1 -->
+            <h2>Mis Proyectos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-12 px-4">
+                <!-- Proyecto 1 - Laravel -->
                 <div
-                    class="bg-gray-800/50 backdrop-blur-sm border border-pink-900/50 rounded-xl p-6 hover:border-pink-500 transition-all hover:-translate-y-2">
-                    <h3 class="text-2xl font-bold text-rosa-claro mb-2">Arquería</h3>
-                    <p class="text-gray-300 mb-4">Juego de arquería con HTML/CSS/JS puro.</p>
-                    <div class="flex gap-2 mb-4">
-                        <span class="bg-pink-900/50 text-rosa-claro px-3 py-1 rounded-full text-xs">HTML/CSS</span>
-                        <span class="bg-pink-900/50 text-rosa-claro px-3 py-1 rounded-full text-xs">JavaScript</span>
+                    class="bg-gray-900/80 border border-pink-900/50 rounded-xl p-6 hover:border-pink-500 transition-all hover:-translate-y-2 group">
+                    <div class="flex items-center mb-4">
+                        <img src="https://yohannagelo.ruix.iesruizgijon.es/arqueria/img/logo_arcos.png"
+                            alt="Logo Arquería" class="h-10 mr-3 bg-white rounded-full ">
+                        <h3 class="text-2xl font-bold text-pink-300">Arquería</h3>
                     </div>
+                    <p class="text-gray-300 mb-4">Proyecto final para DWES con autenticación, migraciones y relaciones
+                        entre tablas.</p>
+
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-pink-900/50 text-pink-300 px-3 py-1 rounded-full text-xs">Laravel</span>
+                        <span class="bg-pink-900/50 text-pink-300 px-3 py-1 rounded-full text-xs">Eloquent ORM</span>
+                        <span class="bg-pink-900/50 text-pink-300 px-3 py-1 rounded-full text-xs">Blade</span>
+                        <span class="bg-pink-900/50 text-pink-300 px-3 py-1 rounded-full text-xs">Breeze</span>
+                    </div>
+
                     <a href="https://yohannagelo.ruix.iesruizgijon.es/arqueria/" target="_blank"
-                        class="text-rosa-medio hover:text-pink-200 flex items-center gap-2">
-                        Ver proyecto <span>→</span>
+                        class="inline-flex items-center text-pink-400 hover:text-pink-200 group-hover:underline">
+                        Ver proyecto
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
                     </a>
                 </div>
 
-                <!-- Tarjeta proyecto 2 (Gelotech) -->
+                <!-- Proyecto 2 - Angular -->
                 <div
-                    class="bg-gray-800/50 backdrop-blur-sm border border-pink-900/50 rounded-xl p-6 hover:border-pink-500 transition-all hover:-translate-y-2">
-                    <h3 class="text-2xl font-bold text-rosa-claro mb-2">Gelotech</h3>
-                    <p class="text-gray-300 mb-4">Descripción breve de tu proyecto.</p>
-                    <div class="flex gap-2 mb-4">
-                        <span class="bg-pink-900/50 text-rosa-claro px-3 py-1 rounded-full text-xs">Tecnología</span>
+                    class="bg-gray-900/80 border border-pink-900/50 rounded-xl p-6 hover:border-pink-500 transition-all hover:-translate-y-2 group">
+                    <div class="flex items-center mb-4">
+                        <img src="https://yohannagelo.ruix.iesruizgijon.es/geloTech/assets/img/logoPc.png"
+                            alt="Logo GeloTech" class="h-10 mr-3">
+                        <h3 class="text-2xl font-bold text-pink-300">GeloTech</h3>
                     </div>
-                    <a href="#" class="text-rosa-medio hover:text-pink-200 flex items-center gap-2">
-                        Próximamente <span>⌛</span>
+                    <p class="text-gray-300 mb-4">Gestión y aprendizaje de componentes con API PHP propia para DWEC.</p>
+
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-pink-900/50 text-pink-300 px-3 py-1 rounded-full text-xs">Angular</span>
+                        <span class="bg-pink-900/50 text-pink-300 px-3 py-1 rounded-full text-xs">API PHP</span>
+                        <span class="bg-pink-900/50 text-pink-300 px-3 py-1 rounded-full text-xs">Bootstrap</span>
+                        <span class="bg-pink-900/50 text-pink-300 px-3 py-1 rounded-full text-xs">Pipes</span>
+                    </div>
+
+                    <a href="https://yohannagelo.ruix.iesruizgijon.es/geloTech/" target="_blank"
+                        class="inline-flex items-center text-pink-400 hover:text-pink-200 group-hover:underline">
+                        Ver proyecto
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Proyecto 3 - DIW -->
+                <div
+                    class="bg-gray-900/80 border border-pink-900/50 rounded-xl p-6 hover:border-pink-500 transition-all hover:-translate-y-2 group">
+                    <div class="flex items-center mb-4">
+                        <img src="https://yohannagelo.github.io/RuizGijon-Conecta/build/img/banner_RG_web.png"
+                            alt="Logo IES Ruiz Gijón" class="h-8 mr-3 bg-white rounded">
+                        <h3 class="text-2xl font-bold text-pink-300">Ruiz Gijón Conecta</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">Seguimiento laboral de alumnos (prototipo en Figma + implementación
+                        con Bootstrap).</p>
+
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-pink-900/50 text-pink-300 px-3 py-1 rounded-full text-xs">Figma</span>
+                        <span class="bg-pink-900/50 text-pink-300 px-3 py-1 rounded-full text-xs">Bootstrap</span>
+                        <span class="bg-pink-900/50 text-pink-300 px-3 py-1 rounded-full text-xs">Sass</span>
+                        <span class="bg-pink-900/50 text-pink-300 px-3 py-1 rounded-full text-xs">Responsive</span>
+                    </div>
+
+                    <a href="https://yohannagelo.github.io/RuizGijon-Conecta/" target="_blank"
+                        class="inline-flex items-center text-pink-400 hover:text-pink-200 group-hover:underline">
+                        Ver proyecto
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
                     </a>
                 </div>
             </div>
+
+        </div>
+    </section>
+
+
+    <!-- Sección Contacto -->
+    <section id="contact" class="py-20 px-4 bg-gradient-to-b from-black to-gray-800 border-t-1 border-t-pink-600">
+        <div class="container mx-auto max-w-2xl">
+            <h2>Contacto</h2>
+
+            <!-- Redes sociales -->
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="mailto:yohannagelo@gmail.com" class="social-icon">
+                    <img src="https://cdn.worldvectorlogo.com/logos/official-gmail-icon-2020-.svg" alt="Gmail"
+                        class="h-8 w-8">
+                </a>
+                <a href="#" class="social-icon">
+                    <img src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" alt="LinkedIn" class="h-8 w-8">
+                </a>
+            </div>
+
+            <!-- Formulario terminal -->
+            <form class="space-y-6">
+                <div>
+                    <label for="name" class="block text-pink-300 mb-2">$ Nombre</label>
+                    <input type="text" id="name" placeholder="_ Ingresa tu nombre"
+                        class="terminal-input w-full px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-pink-500">
+                </div>
+                <div>
+                    <label for="email" class="block text-pink-300 mb-2">$ Email</label>
+                    <input type="email" id="email" placeholder="_ Ingresa tu email"
+                        class="terminal-input w-full px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-pink-500">
+                </div>
+                <div>
+                    <label for="message" class="block text-pink-300 mb-2">$ Mensaje</label>
+                    <textarea id="message" rows="4" placeholder="_ Escribe tu mensaje aquí..."
+                        class="terminal-input w-full px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-pink-500"></textarea>
+                </div>
+                <button type="submit" class="btn-neon">
+                    <span class="mr-2">💻</span> Ejecutar código
+                </button>
+
+            </form>
+
         </div>
     </section>
 
