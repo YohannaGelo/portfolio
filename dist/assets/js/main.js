@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Envía el correo con el mensaje del usuario a ti
             await emailjs.sendForm(
                 'service_zyc35ce',
-                'template_u1pqmi9', 
+                'template_u1pqmi9',
                 form
             );
 
@@ -166,28 +166,39 @@ document.querySelectorAll('.project-card').forEach(card => {
 });
 
 // Crear partículas dinámicas
-const particlesContainer = document.getElementById('particles');
-for (let i = 0; i < 30; i++) {
-    const particle = document.createElement('div');
-    particle.classList.add('particle');
+function createParticles(containerId, count = 15) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    
+    for (let i = 0; i < count; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
 
-    // Posición aleatoria
-    const size = Math.random() * 3 + 1;
-    particle.style.width = `${size}px`;
-    particle.style.height = `${size}px`;
-    particle.style.left = `${Math.random() * 100}%`;
-    particle.style.top = `${Math.random() * 100}%`;
+        // Estilos aleatorios
+        const size = Math.random() * 3 + 1;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        particle.style.opacity = Math.random() * 0.6 + 0.3; // Variar opacidad
 
-    // Animación única para cada partícula
-    particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
-    particle.style.animationDelay = `${Math.random() * 2}s`;
+        // Animación única para cada partícula
+        particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
+        particle.style.animationDelay = `${Math.random() * 2}s`;
 
-    particlesContainer.appendChild(particle);
+        container.appendChild(particle);
+    }
 }
+
+// Crear partículas para ambos contenedores
+document.addEventListener('DOMContentLoaded', () => {
+    createParticles('particles'); // Para la foto
+    createParticles('heroParticles', 60); // Más partículas para el hero (40 en este caso)
+});
 
 
 // Mostrar/ocultar botón al hacer scroll
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
     const scrollToTop = document.getElementById('scrollToTop');
     if (window.pageYOffset > 1000) {
         scrollToTop.classList.add('show');
@@ -196,3 +207,45 @@ window.addEventListener('scroll', function() {
     }
 });
 
+// Toggle del tema
+// Función para cambiar el tema
+function toggleTheme() {
+    const html = document.documentElement;
+    const isLight = html.classList.contains('light');
+    
+    // Alternar clase 'light' en el elemento html
+    html.classList.toggle('light', !isLight);
+    
+    // Actualizar iconos
+    document.getElementById('moonIcon').classList.toggle('hidden', !isLight);
+    document.getElementById('sunIcon').classList.toggle('hidden', isLight);
+    
+    // Guardar preferencia en localStorage
+    localStorage.setItem('theme', isLight ? 'dark' : 'light');
+  }
+  
+  // Función para inicializar el tema al cargar la página
+  function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Aplicar tema guardado o preferencia del sistema
+    if (savedTheme === 'light' || (!savedTheme && !prefersDark)) {
+      document.documentElement.classList.add('light');
+      document.getElementById('moonIcon').classList.add('hidden');
+      document.getElementById('sunIcon').classList.remove('hidden');
+    }
+  }
+  
+  // Inicializar tema al cargar
+  document.addEventListener('DOMContentLoaded', initTheme);
+  
+  // Asignar evento al botón
+  document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+  
+  // Opcional: Escuchar cambios en la preferencia del sistema
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    if (!localStorage.getItem('theme')) {
+      document.documentElement.classList.toggle('light', !e.matches);
+    }
+  });

@@ -1,76 +1,42 @@
 @import 'tailwindcss';
 
-/* @layer theme, base, components, utilities */
-
-/* Para personalizar el tema con nuestras variables */
 /* -------------------------- THEME VARIABLES -------------------------- */
 :root {
-    /* Colores */
-    --color-primary-light: #ff9fdf;
-    --color-primary: #ff6ec7;
-    --color-primary-dark: #ff00aa;
-    --color-bg: #111827;
-    --color-border: #ff00aa;
-    --color-hashtag: #83184380;
-
-
-    /* Textos */
-    --color-text: #f3f4f6;
-    --color-text-sec: #d1d5db;
-    --color-text-hover-nav: white;
-    --color-hover-nav: #83184380;
-    --color-text-hashtag: #ff9fdf;
-
-    /* Sombras */
-    --logo-shadow: #ff00aa;
-    --logo-shadow-dark: #960265;
-    --logo-shadow-light: white;
+    /* Colores base */
+    --color-primary: #FF6EC7;
+    --color-primary-light: #FF9FDF;
+    --color-primary-dark: #E83D96;
+    --color-bg: #0a0a0a;
+    --color-text: #ffffff;
 
     /* Degradados */
-    --color-bg-from: #000000;
-    --color-bg-to: #1e2838;
+    --gradient-bg: linear-gradient(to bottom, #000000, #1e1e1e);
+    --gradient-text: linear-gradient(to right, #FF9FDF, #E83D96);
 
     /* Fuentes */
     --font-orbitron: 'Orbitron', sans-serif;
     --font-mono: 'Roboto Mono', monospace;
-
-    
 }
 
 .light {
-    /* Colores */
-    --color-bg: #ffffff;
-    --color-border: black;
-    --color-hashtag: #ffe2edd3;
-
-
-    /* Textos */
+    --color-primary: #e83e8c;
+    --color-primary-light: #ffb3d1;
+    --color-primary-dark: #c2185b;
+    --color-bg: #ffe4f6;
     --color-text: #1a1a1a;
-    --color-text-sec: #454545;
-    --color-text-hashtag: #ff00aa;
-    --color-text-hover-nav: #ff00aa;
-    --color-hover-nav: #ffecf382;
 
-    /* Sombras */
-    --logo-shadow: #ffffff5b;
-    --logo-shadow-dark: #ff00aa; /* Rosa más intenso */
-    --logo-shadow-light: #ffe2ed;
-    
-    
-    /* Degradados */
-    --color-bg-from: #ffffff;
-    --color-bg-to: #ffe2edd3;
+    --gradient-bg: linear-gradient(to bottom, #ffffff, #ffe4f6);
+    --gradient-text: linear-gradient(to right, #e83e8c, #c2185b);
 }
 
-
 /* -------------------------- BASE STYLES -------------------------- */
-
-/* Para estilos que afectan a todas las etiquetas */
 @layer base {
     body {
         scroll-behavior: smooth !important;
+        background: var(--gradient-bg);
+        color: var(--color-text);
         font-family: var(--font-mono);
-
+        transition: background 0.3s ease, color 0.3s ease;
     }
 
     h1,
@@ -81,10 +47,13 @@
     }
 
     h2 {
-        @apply text-5xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-pink-600;
+        @apply text-5xl font-bold text-center mb-16;
         font-variant: small-caps;
+        background: var(--gradient-text);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
     }
-
 
     @media (orientation: landscape) and (min-width: 700px) and (max-width: 1024px) {
         .logo-tablet-h {
@@ -95,77 +64,68 @@
 }
 
 /* -------------------------- COMPONENTS -------------------------- */
-
-/* Para crear nuestros propios componentes */
 @layer components {
     .wrapper {
         @apply w-[90%] mx-auto max-w-screen-xl;
     }
 
     .btn-neon {
-        @apply bg-pink-600 text-white px-8 py-3 rounded-sm font-bold transition-all shadow-md;
+        @apply px-8 py-3 rounded-sm font-bold transition-all shadow-md;
+        background-color: var(--color-primary);
+        color: white;
         transition: all 0.3s ease-in-out;
     }
 
     .btn-neon:hover {
-        @apply bg-transparent text-pink-400 shadow-lg;
-        border: 1px solid var(--color-primary-dark);
-        cursor: pointer;
-        box-shadow:
-            0 0 1.5px var(--color-primary),
+        @apply bg-transparent shadow-lg;
+        color: var(--color-primary);
+        border: 1px solid var(--color-primary);
+        box-shadow: 0 0 1.5px var(--color-primary),
             inset 0 0 1.5px var(--color-primary);
     }
 }
 
 /* -------------------------- UTILITIES -------------------------- */
-
-/* Para crear nuestras propias utilidades */
 @layer utilities {
     .flex-center {
-        @apply flex justify-items-center items-center;
+        @apply flex justify-center items-center;
+    }
+
+    .text-gradient {
+        background: var(--gradient-text);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
     }
 }
 
 /* -------------------------- CUSTOM STYLES -------------------------- */
 
-/* 🖌️ MIS ESTILOS PERSONALIZADOS 🖌️ */
 /* Transición suave para el cambio de tema */
 html {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Toogle de menú */
 /* Ocultar/mostrar iconos según tema */
 #moonIcon.hidden,
 #sunIcon.hidden {
     display: none;
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-}
-
-.animate-float {
-    animation: float 3s ease-in-out infinite;
-}
-
-/* Efectos para ambos menús */
+/* Efectos de navegación */
 .nav-hover {
     position: relative;
+    color: var(--color-text);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-origin: center;
 }
 
-/* Efecto hover mejorado */
 .nav-hover:hover {
     transform: scale(1.05);
-    text-shadow: 0 0 8px rgba(var(--color-primary), 0.7);
-    filter:
-        drop-shadow(0 0 2px rgba(var(--color-primary), 0.3)) brightness(1.2);
+    color: var(--color-primary-light) !important;
+    text-shadow: 0 0 8px var(--color-primary);
+    filter: drop-shadow(0 0 2px var(--color-primary)) brightness(1.2);
 }
 
-/* Efecto "pulso" sutil al hacer hover */
 .nav-hover::after {
     content: '';
     position: absolute;
@@ -181,20 +141,28 @@ html {
 .nav-hover:hover::after {
     width: 70%;
 }
-
 .logo-nav {
     cursor: pointer;
     filter: drop-shadow(0 0 1.3px var(--color-primary-light));
 }
-
-
-/* Versión móvil - más discreta */
+/* Versión móvil */
 @media (max-width: 1023px) {
     .nav-hover:hover {
         transform: none;
+        background-color: rgba(var(--color-primary), 0.1) !important;
     }
 }
 
+/* Efecto holográfico */
+.hologram-effect {
+    border: 1px solid var(--color-primary);
+    box-shadow: 0 0 5px var(--color-primary),
+        inset 0 0 5px var(--color-primary);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.light .hologram-effect {
+    background: rgba(255, 255, 255, 0.1);
 /* Animaciones para el logo de la página */
 @keyframes cyber-bounce {
     0% {
@@ -220,7 +188,7 @@ html {
 
     55% {
         transform: translateY(-25px) rotate(-3deg);
-        filter: drop-shadow(0 0 10px var(--color-primary-dark));
+        filter: drop-shadow(0 0 10px var(--color-rosa-oscuro));
     }
 
     60% {
@@ -230,7 +198,7 @@ html {
 
     65% {
         transform: translateY(10px) rotate(2deg);
-        filter: drop-shadow(0 0 4px var(--color-white)) drop-shadow(0 0 8px var(--color-primary-light));
+        filter: drop-shadow(0 0 4px var(--color-white)) drop-shadow(0 0 8px var(--color-rosa-claro));
         opacity: 1;
     }
 
@@ -245,7 +213,7 @@ html {
 
     75% {
         transform: translateY(-8px) rotate(-1deg);
-        filter: drop-shadow(0 0 6px var(--color-primary-dark));
+        filter: drop-shadow(0 0 6px var(--color-rosa-oscuro));
     }
 
     78% {
@@ -254,7 +222,7 @@ html {
 
     85% {
         transform: translateY(3px) rotate(0.5deg);
-        filter: drop-shadow(0 0 3px var(--color-white)) drop-shadow(0 0 6px var(--color-primary-light));
+        filter: drop-shadow(0 0 3px var(--color-white)) drop-shadow(0 0 6px var(--color-rosa-claro));
     }
 
     88% {
@@ -263,29 +231,17 @@ html {
 
     100% {
         transform: translateY(0) rotate(0);
-        filter: 
-        drop-shadow(0 0 3px var(--logo-shadow-dark)) 
-        drop-shadow(0 0 1.5px var(--logo-shadow-light)) 
-        drop-shadow(0 0 8px var(--logo-shadow));
+        filter: drop-shadow(0 0 3px #960265) drop-shadow(0 0 1.5px white) drop-shadow(0 0 8px var(--color-rosa-oscuro));
     }
 }
 
 @keyframes fast-pulse {
-    0%,
-    100% {
-        /* filter: drop-shadow(0 0 2px #960265) drop-shadow(0 0 1px white) drop-shadow(0 0 9px var(--color-primary-dark)); */
-        filter: 
-        drop-shadow(0 0 2px var(--logo-shadow-dark)) 
-        drop-shadow(0 0 1px var(--logo-shadow-light)) 
-        drop-shadow(0 0 9px var(--logo-shadow));
+    0%, 100% {
+        filter: drop-shadow(0 0 2px #960265) drop-shadow(0 0 1px white) drop-shadow(0 0 9px var(--color-rosa-oscuro));
     }
 
     50% {
-        /* filter: drop-shadow(0 0 4px #960265) drop-shadow(0 0 2px white) drop-shadow(0 0 18px var(--color-primary-dark)); */
-        filter: 
-        drop-shadow(0 0 4px var(--logo-shadow-dark)) 
-        drop-shadow(0 0 2px var(--logo-shadow-light)) 
-        drop-shadow(0 0 18px var(--logo-shadow));
+        filter: drop-shadow(0 0 4px #960265) drop-shadow(0 0 2px white) drop-shadow(0 0 18px var(--color-rosa-oscuro));
     }
 }
 
@@ -303,13 +259,21 @@ html {
 .logo-final {
     animation: none;
     transform: translateY(0);
-    filter: 
-        drop-shadow(0 0 3px var(--logo-shadow-dark)) 
-        drop-shadow(0 0 1.5px var(--logo-shadow-light)) 
-        drop-shadow(0 0 8px var(--logo-shadow));
+    filter: drop-shadow(0 0 3px #960265) drop-shadow(0 0 1.5px white) drop-shadow(0 0 8px var(--color-rosa-oscuro));
 }
 
 /* Efecto holográfico para foto */
+/* .hologram-effect {
+    position: relative;
+    border: 2px solid #FF6EC7;
+    box-shadow: 0 0 15px #FF6EC7, inset 0 0 15px #FF6EC7;
+    animation: hologram-pulse 4s infinite alternate;
+}
+
+@keyframes hologram-pulse {
+    0% { opacity: 0.9; }
+    100% { opacity: 0.7; }
+} */
 .hologram-container {
     position: relative;
     width: 200px;
@@ -321,7 +285,7 @@ html {
     width: 100%;
     height: 100%;
     position: relative;
-    border: 1px solid var(--color-primary-dark);
+    border: 1px solid var(--color-rosa-oscuro);
     border-radius: 8px;
     overflow: hidden;
     background: rgba(0, 0, 0, 0.3);
@@ -338,10 +302,12 @@ html {
     left: 0;
     right: 0;
     height: 100%;
-    background: linear-gradient(to bottom,
-            transparent 0%,
-            rgba(255, 110, 199, 0.1) 50%,
-            transparent 100%);
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(255, 110, 199, 0.1) 50%,
+        transparent 100%
+    );
     animation: scan 3s linear infinite;
     z-index: 2;
 }
@@ -373,70 +339,29 @@ html {
 }
 
 @keyframes scan {
-    0% {
-        transform: translateY(-100%);
-    }
-
-    100% {
-        transform: translateY(100%);
-    }
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
 }
 
 @keyframes distortion {
-
-    0%,
-    100% {
-        transform: scale(1);
-        opacity: 0.8;
-    }
-
-    25% {
-        transform: scale(1.01) skew(0.5deg, 0.5deg);
-    }
-
-    50% {
-        transform: scale(1);
-        opacity: 1;
-    }
-
-    75% {
-        transform: scale(0.99) skew(-0.5deg, -0.5deg);
-    }
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    25% { transform: scale(1.01) skew(0.5deg, 0.5deg); }
+    50% { transform: scale(1); opacity: 1; }
+    75% { transform: scale(0.99) skew(-0.5deg, -0.5deg); }
 }
 
 @keyframes hologram-pulse {
-    0% {
-        opacity: 0.8;
-    }
-
-    100% {
-        opacity: 1;
-    }
+    0% { opacity: 0.8; }
+    100% { opacity: 1; }
 }
 
 @keyframes color-shift {
-    0% {
-        filter: hue-rotate(0deg) contrast(1.2);
-    }
-
-    50% {
-        filter: hue-rotate(5deg) contrast(1.3);
-    }
-
-    100% {
-        filter: hue-rotate(0deg) contrast(1.2);
-    }
+    0% { filter: hue-rotate(0deg) contrast(1.2); }
+    50% { filter: hue-rotate(5deg) contrast(1.3); }
+    100% { filter: hue-rotate(0deg) contrast(1.2); }
 }
 
 /* Efecto de partículas */
-.particle {
-    position: absolute;
-    background: var(--color-primary);
-    border-radius: 50%;
-    pointer-events: none;
-    animation: float-particles ease-in-out infinite;
-}
-
 .hologram-particles {
     position: absolute;
     top: 0;
@@ -447,18 +372,16 @@ html {
     pointer-events: none;
 }
 
-@keyframes float-particles {
+.particle {
+    position: absolute;
+    background: #FF6EC7;
+    border-radius: 50%;
+    animation: float 4s infinite ease-in-out;
+}
 
-    0%,
-    100% {
-        transform: translateY(0) translateX(0);
-        opacity: 0.3;
-    }
-
-    50% {
-        transform: translateY(-20px) translateX(10px);
-        opacity: 0.6;
-    }
+@keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+    50% { transform: translateY(-20px) translateX(10px); opacity: 0.6; }
 }
 
 /* Estilo para timeline */
@@ -499,8 +422,7 @@ html {
 
 .tech-icon:hover {
     transform: scale(1.2);
-    /* filter: drop-shadow(0 0 4px var(--color-primary-dark)) drop-shadow(0 0 8px #960265); */
-    filter: drop-shadow(0 0 4px var(--logo-shadow-dark)) drop-shadow(0 0 8px var(--logo-shadow));
+    filter: drop-shadow(0 0 4px var(--color-rosa-oscuro)) drop-shadow(0 0 8px #960265);
 }
 
 /* Efectos para los iconos de tecnología */
@@ -510,23 +432,19 @@ html {
 
 .social-icon:hover {
     transform: translateY(-5px);
-    /* filter: drop-shadow(0 0 4px var(--color-primary-dark)) drop-shadow(0 0 8px #960265); */
-    filter: drop-shadow(0 0 4px var(--logo-shadow-dark)) drop-shadow(0 0 8px var(--logo-shadow));
-
+    filter: drop-shadow(0 0 4px var(--color-rosa-oscuro)) drop-shadow(0 0 8px #960265);
 }
 
 /* Estilo para el formulario */
 .terminal-input {
-    background-color: var(--color-bg) !important;
-
-
-    border: 1px solid var(--color-primary-dark);
-    color: var(--color-text);
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--color-rosa-oscuro);
+    color: white;
     font-family: 'Courier New', monospace;
 }
 
 .terminal-input::placeholder {
-    color: var(--color-text);
+    color: white;
     opacity: 0.7;
 }
 
@@ -547,30 +465,22 @@ html {
 /* Aplica estilos cuando los campos de entrada están siendo autocompletados */
 input:-webkit-autofill,
 textarea:-webkit-autofill {
-    background-color: var(--color-bg) !important;
-    color: var(--color-text-sec) !important;
-    /* Asegura que el texto sea blanco */
-    border: 1px solid var(--color-primary-dark) !important;
-    transition: background-color 5000s ease-in-out 0s, color 5000s ease-in-out 0s;
-    /* Evita cambios en el fondo y texto */
+    background-color: rgba(0, 0, 0, 0.5) !important; 
+    color: white !important;  /* Asegura que el texto sea blanco */
+    border: 1px solid var(--color-rosa-oscuro) !important;
+    transition: background-color 5000s ease-in-out 0s, color 5000s ease-in-out 0s; /* Evita cambios en el fondo y texto */
 }
 
 /* Aplica estilos cuando los campos de entrada con auto-completado están en foco */
 input:-webkit-autofill:focus,
 textarea:-webkit-autofill:focus {
-    background-color: var(--color-bg) !important;
-    color: var(--color-text-sec) !important;
-    border-color: #FF6EC7 !important;
-    /* Borde rosa */
-    box-shadow: 0 0 0 2px rgba(255, 110, 199, 0.3) !important;
-}
+    background-color: rgba(0, 0, 0, 0.7) !important; 
+    color: white !important;
+    border-color: #FF6EC7 !important;  /* Borde rosa */
+    box-shadow: 0 0 0 2px rgba(255, 110, 199, 0.3) !important;  
+}}
 
-/* Footer */
-.neon-text {
-    text-shadow: 0 0 5px #FF6EC7, 0 0 10px #FF6EC7;
-    animation: neon-pulse 2s infinite alternate;
-}
-
+/* Animaciones */
 @keyframes neon-pulse {
     from {
         opacity: 0.8;
@@ -578,10 +488,16 @@ textarea:-webkit-autofill:focus {
 
     to {
         opacity: 1;
-        text-shadow: 0 0 10px #FF6EC7, 0 0 20px #FF6EC7;
+        text-shadow: 0 0 10px var(--color-primary), 0 0 20px var(--color-primary);
     }
 }
 
+.neon-text {
+    text-shadow: 0 0 5px var(--color-primary), 0 0 10px var(--color-primary);
+    animation: neon-pulse 2s infinite alternate;
+}
+
+/* Botón scroll to top */
 /* Flecha arriba */
 #scrollToTop {
     position: fixed;
@@ -589,8 +505,9 @@ textarea:-webkit-autofill:focus {
     right: 30px;
     width: 45px;
     height: 45px;
-    border: 2px solid var(--color-primary-dark);
-    color: var(--color-primary-dark);
+    background: rgba(17, 17, 17, 0.716);
+    border: 2px solid var(--color-rosa-oscuro);
+    color: var(--color-rosa-oscuro);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -601,7 +518,7 @@ textarea:-webkit-autofill:focus {
     visibility: hidden;
     z-index: 9999;
     box-shadow: 0 0 15px rgba(255, 110, 199, 0.3),
-        inset 0 0 10px rgba(255, 110, 199, 0.2);
+                inset 0 0 10px rgba(255, 110, 199, 0.2);
 }
 
 #scrollToTop.show {
@@ -610,11 +527,11 @@ textarea:-webkit-autofill:focus {
 }
 
 #scrollToTop:hover {
-    transform: translateY(-5px) scale(1.05);
-    background: rgba(255, 110, 199, 0.2);
-    box-shadow: 0 0 20px rgba(255, 110, 199, 0.5),
-        inset 0 0 15px rgba(255, 110, 199, 0.3);
+    background: rgba(var(--color-primary), 0.2);
+    box-shadow: 0 0 20px rgba(var(--color-primary), 0.5),
+        inset 0 0 15px rgba(var(--color-primary), 0.3);
 }
+
 
 #scrollToTop svg {
     width: 24px;
@@ -629,18 +546,28 @@ textarea:-webkit-autofill:focus {
 
 /* Animación de flotación */
 @keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-5px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
 }
 
 #scrollToTop.show {
     animation: float 3s ease-in-out infinite;
 }
 
+/* Efectos para iconos */
+.tech-icon:hover,
+.social-icon:hover {
+    filter: drop-shadow(0 0 4px var(--color-primary)) drop-shadow(0 0 8px var(--color-primary-dark));
+}
+
+/* Formulario */
+.terminal-input {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--color-primary);
+    color: white;
+}
+
+.light .terminal-input {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-text);
+}
