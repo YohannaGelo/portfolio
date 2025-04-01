@@ -68,6 +68,7 @@
 /* Para estilos que afectan a todas las etiquetas */
 @layer base {
     body {
+        background-color: var(--color-bg-from) !important;
         scroll-behavior: smooth !important;
         font-family: var(--font-mono);
 

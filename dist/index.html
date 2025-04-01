@@ -10,28 +10,34 @@
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@300;400&display=swap"
         rel="stylesheet">
 
-    <link rel="icon" href="dist/assets/img/logo_YohannaGelo.svg" type="image/x-icon">
+    <link rel="icon" href="assets/img/logo_YohannaGelo.png" type="image/x-icon">
+    <!-- Open Graph para Facebook y WhatsApp -->
+    <meta property="og:image" content="https://yohannagelo.ruix.iesruizgijon.es/dist/assets/img/logo_YohannaGelo.png">
+
+    <!-- Twitter Card para Twitter -->
+    <meta name="twitter:image" content="https://yohannagelo.ruix.iesruizgijon.es/dist/assets/img/logo_YohannaGelo.png">
 
     <!-- Conección para correos -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/email.min.js"></script> -->
 
     <!-- ruta del css resultante -->
-    <link rel="stylesheet" href="dist/css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Yohanna Gelo - Portfolio</title>
 </head>
 
-<body class="bg-[var(--color-bg)] text-[var(--color-text)] font-[var(--font-mono)]">
+<body class="bg-[var(--color-bg-from)] text-[var(--color-text)] font-[var(--font-mono)]">
 
     <!-- Hero Section -->
-    <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-[var(--color-bg-from)] to-[var(--color-bg-to)]">
+    <section id="hero"
+        class="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-[var(--color-bg-from)] to-[var(--color-bg-to)]">
         <!-- Contenedor de partículas (añade esta línea) -->
         <div id="heroParticles" class="absolute inset-0 z-0"></div>
-        
+
         <div class="wrapper mx-auto px-4 z-10 text-center">
             <!-- Logo con animación -->
-            <img id="logo" src="dist/assets/img/logo_YohannaGelo.svg" alt="Logo YG"
+            <img id="logo" src="assets/img/logo_YohannaGelo.svg" alt="Logo YG"
                 class="logo-animation w-3/4 md:w-1/2 lg:w-1/3  logo-tablet-h mx-auto mb-35 sm:mb-22 md:mb-16">
-    
+
             <p class="text-xl md:text-2xl text-rosa-claro mb-8">Código con estilo, diseños vibrantes</p>
             <a href="#projects" class="btn-neon">Explora mis proyectos</a>
         </div>
@@ -40,11 +46,11 @@
     <!-- Menú flotante -->
     <!-- Versión Desktop (visible en lg+) -->
     <nav id="desktop-nav"
-        class="hidden py-2 md:flex mx-auto z-50 w-full max-w-[85%] bg-[var(--color-bg)] border border-pink-600 rounded-b-lg shadow-lg shadow-pink-500/20 transition-all duration-300 sticky top-0">
+        class="hidden py-2 md:flex mx-auto z-50 w-full max-w-[85%] bg-[var(--color-bg-from)] border border-pink-600 rounded-b-lg shadow-lg shadow-pink-500/20 transition-all duration-300 sticky top-0">
         <div class="flex justify-evenly items-center w-full">
             <a href="#hero"
                 class="flex items-center nav-hover h-10 px-4 py-1 text-[var(--color-text)] hover:text-[var(--color-text-hover-nav)] hover:bg-[var(--color-hover-nav)] transition-colors">
-                <img src="dist/assets/img/logo_YohannaGelo.svg" alt="Logo" class="h-full w-auto mr-2 logo-nav">
+                <img src="assets/img/logo_YohannaGelo.svg" alt="Logo" class="h-full w-auto mr-2 logo-nav">
             </a>
             <a href="#about"
                 class="flex items-center nav-hover px-4 py-2 text-[var(--color-text)] hover:text-[var(--color-text-hover-nav)] hover:bg-[var(--color-hover-nav)] transition-colors">
@@ -86,7 +92,7 @@
             <div class="flex flex-col">
                 <a href="#hero"
                     class="nav-hover flex items-center justify-center px-4 py-3 w-16 text-[var(--color-text)] hover:text-[var(--color-text-hover-nav)] hover:bg-[var(--color-hover-nav)] border-b border-pink-600/30">
-                    <img src="dist/assets/img/logo_YohannaGelo.svg" alt="Logo" class="h-auto w-full mr-2 logo-nav">
+                    <img src="assets/img/logo_YohannaGelo.svg" alt="Logo" class="h-auto w-full mr-2 logo-nav">
                 </a>
                 <a href="#about"
                     class="nav-hover flex items-center justify-center px-4 py-3 text-[var(--color-text)] hover:text-[var(--color-text-hover-nav)] hover:bg-[var(--color-hover-nav)] border-b border-pink-600/30">
@@ -142,7 +148,7 @@
                 <!-- Foto con efecto holograma -->
                 <div class="hologram-container">
                     <div class="hologram-effect w-full md:w-1/3 flex justify-center">
-                        <img src="dist/assets/img/yomisma.webp" alt="Yohanna Gelo"
+                        <img src="assets/img/yomisma.webp" alt="Yohanna Gelo"
                             class="hologram-img w-full h-auto object-cover rounded-sm">
                         <div class="hologram-particles" id="particles"></div>
                     </div>
@@ -468,7 +474,6 @@
         </div>
     </section>
 
-
     <!-- Sección Contacto -->
     <section id="contact"
         class="py-20 px-4 bg-gradient-to-b from-[var(--color-bg-from)] to-[var(--color-bg-to)] border-t-1 border-[var(--color-border)]">
@@ -530,8 +535,6 @@
         </div>
     </section>
 
-
-
     <!-- Footer -->
     <footer class="py-12 bg-[var(--color-bg)] border-t-1 border-[var(--color-border)]">
         <div class="wrapper mx-auto px-4">
@@ -575,8 +578,12 @@
     </a>
 
     <!-- Scripts -->
-    <script src="dist/assets/js/main.js"></script>
-
+    <!-- Para conección con mailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        emailjs.init('Fenwkx_a5_6--uPQ8');
+    </script>
+    <script src="js/main.js"></script>
 
 </body>
 

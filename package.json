@@ -2,5 +2,10 @@
   "dependencies": {
     "@tailwindcss/cli": "^4.0.17",
     "tailwindcss": "^4.0.17"
-  }
+  },
+
+  "scripts": {
+  "dev": "tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --watch",
+  "build": "tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --minify"
+}
 }

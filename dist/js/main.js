@@ -12,7 +12,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Inicializa EmailJS con tu Public Key
-emailjs.init('Fenwkx_a5_6--uPQ8');
+// emailjs.init('Fenwkx_a5_6--uPQ8');
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('contact-form');
@@ -243,7 +243,7 @@ function toggleTheme() {
   // Asignar evento al botón
   document.getElementById('themeToggle').addEventListener('click', toggleTheme);
   
-  // Opcional: Escuchar cambios en la preferencia del sistema
+  // Escuchar cambios en la preferencia del sistema
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
     if (!localStorage.getItem('theme')) {
       document.documentElement.classList.toggle('light', !e.matches);
