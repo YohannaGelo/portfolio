@@ -37,10 +37,17 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.innerHTML = '<span class="mr-2">⏳</span> Procesando...';
 
         try {
-            // Envía el formulario
+            // Envía el correo de confirmación al usuario
             await emailjs.sendForm(
-                'service_zyc35ce', 
-                'TU_TEMPLATE_ID', 
+                'service_zyc35ce',
+                'template_dmvn59c',
+                form
+            );
+
+            // Envía el correo con el mensaje del usuario a ti
+            await emailjs.sendForm(
+                'service_zyc35ce',
+                'template_u1pqmi9', 
                 form
             );
 
@@ -66,6 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!form.email.validity.valid) {
             showError(form.email, 'Ingresa un email válido');
+            isValid = false;
+        }
+
+        if (!form.title.validity.valid) {
+            showError(form.title, 'Por favor, ingresa un título para tu mensaje');
             isValid = false;
         }
 

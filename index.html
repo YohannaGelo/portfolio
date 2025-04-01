@@ -437,12 +437,15 @@
 
             <!-- Redes sociales -->
             <div class="flex justify-center space-x-6 mb-8">
+                <a href="https://www.linkedin.com/in/yohannagelo/" class="social-icon">
+                    <img src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" alt="LinkedIn" class="h-8 w-8">
+                </a>
+                <a href="https://github.com/YohannaGelo" class="social-icon">
+                    <img src="https://cdn.worldvectorlogo.com/logos/github-icon-1.svg" alt="GitHub" class="h-8 w-8 bg-white rounded-full border border-white">
+                </a>
                 <a href="mailto:yohannagelo@gmail.com" class="social-icon">
                     <img src="https://cdn.worldvectorlogo.com/logos/official-gmail-icon-2020-.svg" alt="Gmail"
                         class="h-8 w-8">
-                </a>
-                <a href="https://www.linkedin.com/in/yohannagelo/" class="social-icon">
-                    <img src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" alt="LinkedIn" class="h-8 w-8">
                 </a>
             </div>
 
@@ -451,21 +454,28 @@
                 <div>
                     <label for="name" class="block text-pink-300 mb-2">$ Nombre</label>
                     <input type="text" id="name" name="name" placeholder="_ Ingresa tu nombre" 
-                           class="terminal-input w-full px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-pink-500"
+                           class="terminal-input w-full px-4 py-1 rounded focus:outline-none focus:ring-2 focus:ring-pink-500"
                            minlength="3" required>
                     <div class="text-pink-500 text-sm mt-1 hidden" id="name-error"></div>
                 </div>
                 <div>
                     <label for="email" class="block text-pink-300 mb-2">$ Email</label>
                     <input type="email" id="email" name="email" placeholder="_ Ingresa tu email"
-                           class="terminal-input w-full px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-pink-500"
+                           class="terminal-input w-full px-4 py-1 rounded focus:outline-none focus:ring-2 focus:ring-pink-500"
                            required>
                     <div class="text-pink-500 text-sm mt-1 hidden" id="email-error"></div>
                 </div>
                 <div>
+                    <label for="title" class="block text-pink-300 mb-2">$ Título</label>
+                    <input type="text" id="title" name="title" placeholder="_ Ingresa el título del mensaje"
+                           class="terminal-input w-full px-4 py-1 rounded focus:outline-none focus:ring-2 focus:ring-pink-500"
+                           required>
+                    <div class="text-pink-500 text-sm mt-1 hidden" id="title-error"></div>
+                </div>
+                <div>
                     <label for="message" class="block text-pink-300 mb-2">$ Mensaje</label>
                     <textarea id="message" name="message" rows="4" placeholder="_ Escribe tu mensaje aquí..."
-                              class="terminal-input w-full px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-pink-500"
+                              class="terminal-input w-full px-4 py-1 rounded focus:outline-none focus:ring-2 focus:ring-pink-500"
                               minlength="10" required></textarea>
                     <div class="text-pink-500 text-sm mt-1 hidden" id="message-error"></div>
                 </div>
@@ -474,15 +484,41 @@
                 </button>
                 <div id="form-feedback" class="hidden mt-4 p-3 rounded text-center"></div>
             </form>
+            
 
         </div>
     </section>
 
 
     <!-- Footer -->
-    <footer
-        class="py-10 border-t-1 border-gray-800 text-center bg-gradient-to-b from-black to-gray-800 border-t-1 border-t-pink-600">
-        <p class="text-rosa-medio/70">Hecho con ❤️ y código neón</p>
+    <footer class="py-12 border-t border-gray-800 bg-gradient-to-b from-black to-gray-900 border-t-1 border-t-pink-600">
+        <div class="wrapper mx-auto px-4">
+            <!-- Nuevo copy -->
+            <div class="text-center mx-auto mb-8">
+                <h3 class="text-[1.1rem] font-mono text-pink-400 mb-4">
+                    "Transformando ideas en <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-pink-600">experiencias digitales</span>"
+                </h3>
+                <p class="text-gray-400 font-mono text-[0.9rem]">
+                    ¿Listo para crear algo increíble juntos?<br>
+                    Cada línea de código es una oportunidad para innovar.
+                </p>
+            </div>
+    
+            <!-- Línea divisoria neón -->
+            <div class="h-px w-full bg-gradient-to-r from-transparent via-pink-600 to-transparent my-6"></div>
+    
+            <!-- Copy -->
+            <!-- Copy -->
+<div class="flex flex-col md:flex-row justify-center md:justify-between items-center text-center md:text-left">
+    <p class="text-pink-300/80 font-mono text-sm order-2 md:order-1 mt-4 md:mt-0">
+        © 2025 Yohanna Gelo. Todos los derechos reservados.
+    </p>
+    <p class="text-pink-400/90 font-mono text-base order-1 md:order-2">
+        Hecho con <span class="text-pink-500">❤️</span> y <span class="neon-text">código neón</span>
+    </p>
+</div>
+
+        </div>
     </footer>
 
     <!-- Scripts -->

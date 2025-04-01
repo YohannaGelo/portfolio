@@ -399,10 +399,9 @@
 }
 
 .terminal-input::placeholder {
-    color: var(--color-rosa-oscuro);
+    color: white;
     opacity: 0.7;
 }
-
 
 .terminal-input:invalid {
     border-color: #FF6EC7;
@@ -416,4 +415,32 @@
 .btn-neon:disabled {
     opacity: 0.7;
     cursor: not-allowed;
+}
+
+/* Aplica estilos cuando los campos de entrada están siendo autocompletados */
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+    background-color: rgba(0, 0, 0, 0.5) !important; 
+    color: white !important;  /* Asegura que el texto sea blanco */
+    border: 1px solid var(--color-rosa-oscuro) !important;
+    transition: background-color 5000s ease-in-out 0s, color 5000s ease-in-out 0s; /* Evita cambios en el fondo y texto */
+}
+
+/* Aplica estilos cuando los campos de entrada con auto-completado están en foco */
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill:focus {
+    background-color: rgba(0, 0, 0, 0.7) !important; 
+    color: white !important;
+    border-color: #FF6EC7 !important;  /* Borde rosa */
+    box-shadow: 0 0 0 2px rgba(255, 110, 199, 0.3) !important;  
+}
+
+/* Footer */
+.neon-text {
+    text-shadow: 0 0 5px #FF6EC7, 0 0 10px #FF6EC7;
+    animation: neon-pulse 2s infinite alternate;
+}
+@keyframes neon-pulse {
+    from { opacity: 0.8; }
+    to { opacity: 1; text-shadow: 0 0 10px #FF6EC7, 0 0 20px #FF6EC7; }
 }
