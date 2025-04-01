@@ -444,3 +444,59 @@ textarea:-webkit-autofill:focus {
     from { opacity: 0.8; }
     to { opacity: 1; text-shadow: 0 0 10px #FF6EC7, 0 0 20px #FF6EC7; }
 }
+
+/* Flecha arriba */
+#scrollToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    background: rgba(17, 17, 17, 0.716);
+    border: 2px solid var(--color-rosa-oscuro);
+    color: var(--color-rosa-oscuro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 9999;
+    box-shadow: 0 0 15px rgba(255, 110, 199, 0.3),
+                inset 0 0 10px rgba(255, 110, 199, 0.2);
+}
+
+#scrollToTop.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#scrollToTop:hover {
+    transform: translateY(-5px) scale(1.05);
+    background: rgba(255, 110, 199, 0.2);
+    box-shadow: 0 0 20px rgba(255, 110, 199, 0.5),
+                inset 0 0 15px rgba(255, 110, 199, 0.3);
+}
+
+#scrollToTop svg {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s;
+}
+
+#scrollToTop:hover svg {
+    transform: translateY(-3px);
+    filter: drop-shadow(0 0 2px #FF6EC7);
+}
+
+/* Animación de flotación */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+#scrollToTop.show {
+    animation: float 3s ease-in-out infinite;
+}

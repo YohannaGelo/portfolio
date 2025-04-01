@@ -184,3 +184,15 @@ for (let i = 0; i < 30; i++) {
 
     particlesContainer.appendChild(particle);
 }
+
+
+// Mostrar/ocultar botón al hacer scroll
+window.addEventListener('scroll', function() {
+    const scrollToTop = document.getElementById('scrollToTop');
+    if (window.pageYOffset > 1000) {
+        scrollToTop.classList.add('show');
+    } else {
+        scrollToTop.classList.remove('show');
+    }
+});
+
