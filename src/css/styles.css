@@ -16,9 +16,20 @@
 
 /* Para estilos que afectan a todas las etiquetas */
 @layer base {
+    body {
+        scroll-behavior: smooth !important;
+    }
+
     h2 {
         @apply text-5xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-pink-600;
         font-variant: small-caps;
+    }
+
+    @media (orientation: landscape) and (min-width: 700px) and (max-width: 1024px) {
+        .logo-tablet-h {
+            max-width: 30% !important;
+            margin-bottom: 32px !important;
+        }
     }
 }
 
@@ -58,25 +69,54 @@
 
 /* 🖌️ MIS ESTILOS PERSONALIZADOS 🖌️ */
 
-#floating-nav {
-    position: sticky; /* Se queda fijo al hacer scroll */
-    top: 0; /* Se fija en la parte superior */
-    z-index: 50; /* Asegúrate de que esté por encima de otros elementos */
-    width: 95%; /* Ocupa todo el ancho de la pantalla */
-    background-color: rgba(0, 0, 0, 0.8); /* Fondo para que sea visible */
-    border-bottom: 1px solid var(--color-rosa-oscuro); /* Línea inferior opcional */
-    padding: 0.2rem 1rem; /* Espaciado interno */
-    transition: all 0.4s ease-in-out;
+
+/* Efectos para ambos menús */
+.nav-hover {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
 }
 
+/* Efecto hover mejorado */
 .nav-hover:hover {
-    @apply bg-transparent text-pink-400 shadow-lg;
-        cursor: pointer;
-        box-shadow:
-        0 0 1.5px #FF6EC7,
-        inset 0 0 1.5px #FF6EC7;
+    transform: scale(1.05);
+    color: white !important;
+    text-shadow: 0 0 8px rgba(255, 110, 199, 0.7);
+    filter: 
+        drop-shadow(0 0 2px rgba(255, 110, 199, 0.3))
+        brightness(1.2);
 }
 
+/* Efecto "pulso" sutil al hacer hover */
+.nav-hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #FF6EC7, transparent);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-hover:hover::after {
+    width: 70%;
+}
+
+.logo-nav {
+    cursor: pointer;
+    filter: drop-shadow(0 0 1.3px var(--color-rosa-claro));
+}
+
+
+/* Versión móvil - más discreta */
+@media (max-width: 1023px) {
+    .nav-hover:hover {
+        transform: none;
+        background-color: rgba(255, 110, 199, 0.1) !important;
+    }
+}
 
 /* Animaciones para el logo de la página */
 @keyframes cyber-bounce {
@@ -361,4 +401,19 @@
 .terminal-input::placeholder {
     color: var(--color-rosa-oscuro);
     opacity: 0.7;
+}
+
+
+.terminal-input:invalid {
+    border-color: #FF6EC7;
+}
+
+.terminal-input:focus {
+    border-color: #FF6EC7;
+    box-shadow: 0 0 0 2px rgba(255, 110, 199, 0.3);
+}
+
+.btn-neon:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
 }

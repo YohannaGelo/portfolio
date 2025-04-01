@@ -1,3 +1,104 @@
+// Selecciona todos los enlaces que apunten a un ID (anclajes)
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault(); // Prevenir el comportamiento por defecto (ir al anclaje)
+
+        const target = document.querySelector(this.getAttribute('href')); // Obtener el elemento objetivo
+        window.scrollTo({
+            top: target.offsetTop, // Desplazarse al top del elemento objetivo
+            behavior: 'smooth' // Desplazamiento suave
+        });
+    });
+});
+
+// Inicializa EmailJS con tu Public Key
+emailjs.init('Fenwkx_a5_6--uPQ8');
+
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const formFeedback = document.getElementById('form-feedback');
+
+    // Validación en tiempo real
+    form.addEventListener('input', (e) => {
+        const input = e.target;
+        if (input.validity.valid) {
+            hideError(input);
+        }
+    });
+
+    // Envío con EmailJS
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        if (!validateForm()) return;
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="mr-2">⏳</span> Procesando...';
+
+        try {
+            // Envía el formulario
+            await emailjs.sendForm(
+                'service_zyc35ce', 
+                'TU_TEMPLATE_ID', 
+                form
+            );
+
+            showFeedback('✅ Mensaje enviado con éxito. ¡Te responderé pronto!', 'bg-green-900/50');
+            form.reset();
+        } catch (error) {
+            showFeedback('❌ Error al enviar. Por favor, inténtalo de nuevo.', 'bg-red-900/50');
+            console.error('Error:', error);
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span class="mr-2">💻</span> Ejecutar código';
+        }
+    });
+
+    // Funciones auxiliares
+    function validateForm() {
+        let isValid = true;
+
+        if (!form.name.validity.valid) {
+            showError(form.name, 'Mínimo 3 caracteres');
+            isValid = false;
+        }
+
+        if (!form.email.validity.valid) {
+            showError(form.email, 'Ingresa un email válido');
+            isValid = false;
+        }
+
+        if (!form.message.validity.valid) {
+            showError(form.message, 'Mínimo 10 caracteres');
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
+    function showError(input, message) {
+        const errorElement = document.getElementById(`${input.id}-error`);
+        errorElement.textContent = message;
+        errorElement.classList.remove('hidden');
+        input.classList.add('border-pink-500');
+    }
+
+    function hideError(input) {
+        const errorElement = document.getElementById(`${input.id}-error`);
+        errorElement.classList.add('hidden');
+        input.classList.remove('border-pink-500');
+    }
+
+    function showFeedback(message, bgClass) {
+        formFeedback.textContent = message;
+        formFeedback.className = `${bgClass} mt-4 p-3 rounded text-center`;
+        formFeedback.classList.remove('hidden');
+        setTimeout(() => formFeedback.classList.add('hidden'), 5000);
+    }
+});
+
+
 const logo = document.getElementById('logo');
 
 // Cuando termina la animación inicial...
@@ -11,20 +112,35 @@ logo.addEventListener('mouseleave', () => {
 });
 
 // Comportamiento del nav
-// document.addEventListener("DOMContentLoaded", () => {
-//     const nav = document.getElementById("floating-nav");
-//     const hero = document.getElementById("hero");
+document.addEventListener('DOMContentLoaded', () => {
+    // Toggle del menú móvil
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-//     window.addEventListener("scroll", () => {
-//         if (window.scrollY >= hero.offsetHeight - 100) {
-//             nav.classList.add("nav-fixed");
-            
-//         } else {
-//             nav.classList.remove("nav-fixed");
-//         }
-//     });
-// });
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        mobileMenu.classList.toggle('hidden');
+        // Animación
+        if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.style.transform = 'scale(0.95) translateY(-10px)';
+            mobileMenu.style.opacity = '0';
+            setTimeout(() => {
+                mobileMenu.style.transform = 'scale(1) translateY(0)';
+                mobileMenu.style.opacity = '1';
+            }, 10);
+        }
+    });
 
+    // Cerrar al hacer clic fuera
+    document.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+    });
+
+    // Prevenir cierre al hacer clic en el menú
+    mobileMenu.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+});
 
 
 // Efecto hover en tarjetas
@@ -42,17 +158,17 @@ const particlesContainer = document.getElementById('particles');
 for (let i = 0; i < 30; i++) {
     const particle = document.createElement('div');
     particle.classList.add('particle');
-    
+
     // Posición aleatoria
     const size = Math.random() * 3 + 1;
     particle.style.width = `${size}px`;
     particle.style.height = `${size}px`;
     particle.style.left = `${Math.random() * 100}%`;
     particle.style.top = `${Math.random() * 100}%`;
-    
+
     // Animación única para cada partícula
     particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
     particle.style.animationDelay = `${Math.random() * 2}s`;
-    
+
     particlesContainer.appendChild(particle);
 }
