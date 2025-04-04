@@ -169,7 +169,7 @@ document.querySelectorAll('.project-card').forEach(card => {
 function createParticles(containerId, count = 15) {
     const container = document.getElementById(containerId);
     if (!container) return;
-    
+
     for (let i = 0; i < count; i++) {
         const particle = document.createElement('div');
         particle.classList.add('particle');
@@ -212,40 +212,40 @@ window.addEventListener('scroll', function () {
 function toggleTheme() {
     const html = document.documentElement;
     const isLight = html.classList.contains('light');
-    
+
     // Alternar clase 'light' en el elemento html
     html.classList.toggle('light', !isLight);
-    
+
     // Actualizar iconos
     document.getElementById('moonIcon').classList.toggle('hidden', !isLight);
     document.getElementById('sunIcon').classList.toggle('hidden', isLight);
-    
+
     // Guardar preferencia en localStorage
     localStorage.setItem('theme', isLight ? 'dark' : 'light');
-  }
-  
-  // Función para inicializar el tema al cargar la página
-  function initTheme() {
+}
+
+// Función para inicializar el tema al cargar la página
+function initTheme() {
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
+
     // Aplicar tema guardado o preferencia del sistema
     if (savedTheme === 'light' || (!savedTheme && !prefersDark)) {
-      document.documentElement.classList.add('light');
-      document.getElementById('moonIcon').classList.add('hidden');
-      document.getElementById('sunIcon').classList.remove('hidden');
+        document.documentElement.classList.add('light');
+        document.getElementById('moonIcon').classList.add('hidden');
+        document.getElementById('sunIcon').classList.remove('hidden');
     }
-  }
-  
-  // Inicializar tema al cargar
-  document.addEventListener('DOMContentLoaded', initTheme);
-  
-  // Asignar evento al botón
-  document.getElementById('themeToggle').addEventListener('click', toggleTheme);
-  
-  // Escuchar cambios en la preferencia del sistema
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+}
+
+// Inicializar tema al cargar
+document.addEventListener('DOMContentLoaded', initTheme);
+
+// Asignar evento al botón
+document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+
+// Escuchar cambios en la preferencia del sistema
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
     if (!localStorage.getItem('theme')) {
-      document.documentElement.classList.toggle('light', !e.matches);
+        document.documentElement.classList.toggle('light', !e.matches);
     }
-  });
+});
