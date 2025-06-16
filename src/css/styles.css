@@ -34,7 +34,7 @@
     --font-orbitron: 'Orbitron', sans-serif;
     --font-mono: 'Roboto Mono', monospace;
 
-    
+
 }
 
 .light {
@@ -53,10 +53,11 @@
 
     /* Sombras */
     --logo-shadow: #ffffff5b;
-    --logo-shadow-dark: #ff00aa; /* Rosa más intenso */
+    --logo-shadow-dark: #ff00aa;
+    /* Rosa más intenso */
     --logo-shadow-light: #ffe2ed;
-    
-    
+
+
     /* Degradados */
     --color-bg-from: #ffffff;
     --color-bg-to: #ffe2edd3;
@@ -143,8 +144,15 @@ html {
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
 }
 
 .animate-float {
@@ -264,29 +272,24 @@ html {
 
     100% {
         transform: translateY(0) rotate(0);
-        filter: 
-        drop-shadow(0 0 3px var(--logo-shadow-dark)) 
-        drop-shadow(0 0 1.5px var(--logo-shadow-light)) 
-        drop-shadow(0 0 8px var(--logo-shadow));
+        filter:
+            drop-shadow(0 0 3px var(--logo-shadow-dark)) drop-shadow(0 0 1.5px var(--logo-shadow-light)) drop-shadow(0 0 8px var(--logo-shadow));
     }
 }
 
 @keyframes fast-pulse {
+
     0%,
     100% {
         /* filter: drop-shadow(0 0 2px #960265) drop-shadow(0 0 1px white) drop-shadow(0 0 9px var(--color-primary-dark)); */
-        filter: 
-        drop-shadow(0 0 2px var(--logo-shadow-dark)) 
-        drop-shadow(0 0 1px var(--logo-shadow-light)) 
-        drop-shadow(0 0 9px var(--logo-shadow));
+        filter:
+            drop-shadow(0 0 2px var(--logo-shadow-dark)) drop-shadow(0 0 1px var(--logo-shadow-light)) drop-shadow(0 0 9px var(--logo-shadow));
     }
 
     50% {
         /* filter: drop-shadow(0 0 4px #960265) drop-shadow(0 0 2px white) drop-shadow(0 0 18px var(--color-primary-dark)); */
-        filter: 
-        drop-shadow(0 0 4px var(--logo-shadow-dark)) 
-        drop-shadow(0 0 2px var(--logo-shadow-light)) 
-        drop-shadow(0 0 18px var(--logo-shadow));
+        filter:
+            drop-shadow(0 0 4px var(--logo-shadow-dark)) drop-shadow(0 0 2px var(--logo-shadow-light)) drop-shadow(0 0 18px var(--logo-shadow));
     }
 }
 
@@ -304,10 +307,8 @@ html {
 .logo-final {
     animation: none;
     transform: translateY(0);
-    filter: 
-        drop-shadow(0 0 3px var(--logo-shadow-dark)) 
-        drop-shadow(0 0 1.5px var(--logo-shadow-light)) 
-        drop-shadow(0 0 8px var(--logo-shadow));
+    filter:
+        drop-shadow(0 0 3px var(--logo-shadow-dark)) drop-shadow(0 0 1.5px var(--logo-shadow-light)) drop-shadow(0 0 8px var(--logo-shadow));
 }
 
 /* Efecto holográfico para foto */
@@ -645,3 +646,75 @@ textarea:-webkit-autofill:focus {
     animation: float 3s ease-in-out infinite;
 }
 
+/* Animación para modal de info de proyecto */
+@keyframes slideInTop {
+    from {
+        opacity: 0;
+        transform: translateY(-40px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Animación para mostrar el modal de info de proyecto */
+@keyframes slideOutTop {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-40px) scale(0.95);
+    }
+}
+
+.modal-enter {
+    animation: slideInTop 0.4s ease forwards;
+}
+
+.modal-exit {
+    animation: slideOutTop 0.3s ease forwards;
+}
+
+/* Estilo enlaces del modal */
+.btn-outline-pink {
+    @apply inline-flex items-center border border-pink-400 text-pink-400 px-4 py-2 rounded hover:bg-pink-600 hover:text-white transition-colors duration-300;
+}
+
+.btn-outline-pink svg {
+    @apply ml-2 w-4 h-4 transition-transform duration-200;
+}
+
+.btn-outline-pink:hover svg {
+    transform: translateX(2px);
+}
+
+/* Estilo para el scroll solo dentro del modal */
+#modalBox::-webkit-scrollbar {
+    width: 8px;
+}
+
+#modalBox::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#modalBox::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+    border-radius: 6px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+#modalBox::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-primary);
+}
+
+/* Firefox */
+#modalBox {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) transparent;
+}

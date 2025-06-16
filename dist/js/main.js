@@ -1,15 +1,32 @@
 // Selecciona todos los enlaces que apunten a un ID (anclajes)
+// document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+//     anchor.addEventListener('click', function (e) {
+//         e.preventDefault(); // Prevenir el comportamiento por defecto (ir al anclaje)
+
+//         const target = document.querySelector(this.getAttribute('href')); // Obtener el elemento objetivo
+//         window.scrollTo({
+//             top: target.offsetTop, // Desplazarse al top del elemento objetivo
+//             behavior: 'smooth' // Desplazamiento suave
+//         });
+//     });
+// });
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault(); // Prevenir el comportamiento por defecto (ir al anclaje)
+        const href = this.getAttribute('href');
+        if (href === "#" || href === "!" || href === "javascript:void(0)") return;
+        // Ignorar los que no apuntan a ningún ID válido
 
-        const target = document.querySelector(this.getAttribute('href')); // Obtener el elemento objetivo
-        window.scrollTo({
-            top: target.offsetTop, // Desplazarse al top del elemento objetivo
-            behavior: 'smooth' // Desplazamiento suave
-        });
+        const target = document.querySelector(href);
+        if (target) {
+            e.preventDefault();
+            window.scrollTo({
+                top: target.offsetTop,
+                behavior: 'smooth'
+            });
+        }
     });
 });
+
 
 // Inicializa EmailJS con tu Public Key
 // emailjs.init('Fenwkx_a5_6--uPQ8');
@@ -193,7 +210,7 @@ function createParticles(containerId, count = 15) {
 // Crear partículas para ambos contenedores
 document.addEventListener('DOMContentLoaded', () => {
     createParticles('particles'); // Para la foto
-    createParticles('heroParticles', 60); // Más partículas para el hero (40 en este caso)
+    createParticles('heroParticles', 60); // Más partículas para el hero (60 en este caso)
 });
 
 
@@ -209,33 +226,70 @@ window.addEventListener('scroll', function () {
 
 // Toggle del tema
 // Función para cambiar el tema
+// function toggleTheme() {
+//     const html = document.documentElement;
+//     const isLight = html.classList.contains('light');
+
+//     // Alternar clase 'light' en el elemento html
+//     html.classList.toggle('light', !isLight);
+
+//     // Actualizar iconos
+//     document.getElementById('moonIcon').classList.toggle('hidden', !isLight);
+//     document.getElementById('sunIcon').classList.toggle('hidden', isLight);
+
+//     // Guardar preferencia en localStorage
+//     localStorage.setItem('theme', isLight ? 'dark' : 'light');
+// }
 function toggleTheme() {
     const html = document.documentElement;
     const isLight = html.classList.contains('light');
 
-    // Alternar clase 'light' en el elemento html
-    html.classList.toggle('light', !isLight);
+    if (isLight) {
+        html.classList.remove('light');
+        html.classList.add('dark');
+    } else {
+        html.classList.remove('dark');
+        html.classList.add('light');
+    }
 
-    // Actualizar iconos
+    // Iconos del botón
     document.getElementById('moonIcon').classList.toggle('hidden', !isLight);
     document.getElementById('sunIcon').classList.toggle('hidden', isLight);
 
-    // Guardar preferencia en localStorage
+    // Guardar preferencia
     localStorage.setItem('theme', isLight ? 'dark' : 'light');
 }
 
+
 // Función para inicializar el tema al cargar la página
+// function initTheme() {
+//     const savedTheme = localStorage.getItem('theme');
+//     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+//     // Aplicar tema guardado o preferencia del sistema
+//     if (savedTheme === 'light' || (!savedTheme && !prefersDark)) {
+//         document.documentElement.classList.add('light');
+//         document.getElementById('moonIcon').classList.add('hidden');
+//         document.getElementById('sunIcon').classList.remove('hidden');
+//     }
+// }
 function initTheme() {
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    // Aplicar tema guardado o preferencia del sistema
     if (savedTheme === 'light' || (!savedTheme && !prefersDark)) {
         document.documentElement.classList.add('light');
+        document.documentElement.classList.remove('dark');
         document.getElementById('moonIcon').classList.add('hidden');
         document.getElementById('sunIcon').classList.remove('hidden');
+    } else {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+        document.getElementById('sunIcon').classList.add('hidden');
+        document.getElementById('moonIcon').classList.remove('hidden');
     }
 }
+
 
 // Inicializar tema al cargar
 document.addEventListener('DOMContentLoaded', initTheme);
@@ -249,3 +303,62 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e =
         document.documentElement.classList.toggle('light', !e.matches);
     }
 });
+
+// Abrir modal con info de proyecto
+function openProjectModal(projectId) {
+    const modal = document.getElementById('projectModal');
+    const modalBox = document.getElementById('modalBox');
+    const content = document.getElementById('modalContent');
+
+    // Reinicia estado por si quedó una animación anterior
+    modalBox.classList.remove('modal-enter', 'modal-exit');
+
+    fetch(`proyectos/${projectId}.html`)
+        .then(res => res.text())
+        .then(html => {
+            content.innerHTML = html;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+
+            // Forzar reflow para reiniciar animación
+            void modalBox.offsetWidth;
+
+            // Aplicar animación de entrada
+            modalBox.classList.add('modal-enter');
+        })
+        .catch(err => {
+            content.innerHTML = '<p>Error al cargar el contenido.</p>';
+            modal.classList.remove('hidden');
+            void modalBox.offsetWidth;
+            modalBox.classList.add('modal-enter');
+        });
+}
+
+// Cerrar el modal
+function closeModal() {
+    const modal = document.getElementById('projectModal');
+    const modalBox = document.getElementById('modalBox');
+
+    // Limpia entrada y fuerza reflow
+    modalBox.classList.remove('modal-enter');
+    void modalBox.offsetWidth;
+
+    // Añade salida
+    modalBox.classList.add('modal-exit');
+
+    setTimeout(() => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+    }, 300);
+}
+
+document.addEventListener('click', (e) => {
+    if (e.target.id === 'closeModal' || e.target.id === 'projectModal') {
+        closeModal();
+    }
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+});
+
