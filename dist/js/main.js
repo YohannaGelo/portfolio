@@ -1,15 +1,4 @@
 // Selecciona todos los enlaces que apunten a un ID (anclajes)
-// document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-//     anchor.addEventListener('click', function (e) {
-//         e.preventDefault(); // Prevenir el comportamiento por defecto (ir al anclaje)
-
-//         const target = document.querySelector(this.getAttribute('href')); // Obtener el elemento objetivo
-//         window.scrollTo({
-//             top: target.offsetTop, // Desplazarse al top del elemento objetivo
-//             behavior: 'smooth' // Desplazamiento suave
-//         });
-//     });
-// });
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
@@ -226,20 +215,6 @@ window.addEventListener('scroll', function () {
 
 // Toggle del tema
 // Función para cambiar el tema
-// function toggleTheme() {
-//     const html = document.documentElement;
-//     const isLight = html.classList.contains('light');
-
-//     // Alternar clase 'light' en el elemento html
-//     html.classList.toggle('light', !isLight);
-
-//     // Actualizar iconos
-//     document.getElementById('moonIcon').classList.toggle('hidden', !isLight);
-//     document.getElementById('sunIcon').classList.toggle('hidden', isLight);
-
-//     // Guardar preferencia en localStorage
-//     localStorage.setItem('theme', isLight ? 'dark' : 'light');
-// }
 function toggleTheme() {
     const html = document.documentElement;
     const isLight = html.classList.contains('light');
@@ -262,17 +237,6 @@ function toggleTheme() {
 
 
 // Función para inicializar el tema al cargar la página
-// function initTheme() {
-//     const savedTheme = localStorage.getItem('theme');
-//     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-//     // Aplicar tema guardado o preferencia del sistema
-//     if (savedTheme === 'light' || (!savedTheme && !prefersDark)) {
-//         document.documentElement.classList.add('light');
-//         document.getElementById('moonIcon').classList.add('hidden');
-//         document.getElementById('sunIcon').classList.remove('hidden');
-//     }
-// }
 function initTheme() {
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -305,7 +269,7 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e =
 });
 
 // Abrir modal con info de proyecto
-function openProjectModal(projectId) {
+window.openProjectModal = function (projectId) {
     const modal = document.getElementById('projectModal');
     const modalBox = document.getElementById('modalBox');
     const content = document.getElementById('modalContent');
@@ -335,7 +299,8 @@ function openProjectModal(projectId) {
 }
 
 // Cerrar el modal
-function closeModal() {
+window.closeModal = function () {
+
     const modal = document.getElementById('projectModal');
     const modalBox = document.getElementById('modalBox');
 
@@ -362,3 +327,16 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeModal();
 });
 
+function showCertModal(imgUrl) {
+    const modal = document.getElementById('certModal');
+    const img = document.getElementById('certModalImg');
+    img.src = imgUrl;
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeCertModal() {
+    const modal = document.getElementById('certModal');
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+}
