@@ -7,8 +7,7 @@ export default {
   safelist: [
     'modal-enter',
     'modal-exit',
-    'bg-black/30',
-    'dark:bg-white/20'
+
   ],
   darkMode: 'class',
   theme: {

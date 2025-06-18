@@ -35,7 +35,11 @@
     --font-mono: 'Roboto Mono', monospace;
 
     --modal-bg: rgba(255, 255, 255, 0.2);
+<<<<<<< HEAD
 
+=======
+    /* modo oscuro */
+>>>>>>> 33f8f6b215f1fc234173d39d0c1167bba82224e3
 }
 
 .light {
@@ -64,6 +68,11 @@
     --color-bg-to: #ffe2edd3;
 
     --modal-bg: rgba(0, 0, 0, 0.3);
+<<<<<<< HEAD
+=======
+    /* modo claro */
+
+>>>>>>> 33f8f6b215f1fc234173d39d0c1167bba82224e3
 }
 
 
